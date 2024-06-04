@@ -11,6 +11,11 @@ config_setting(
     values = {"cpu": "x64_windows"},
 )
 
+config_setting(
+    name = "x64_x86_windows",
+    values = {"cpu": "x64_x86_windows"},
+)
+
 load(":bazel/gflags.bzl", "gflags_sources", "gflags_library")
 
 (hdrs, srcs) = gflags_sources(namespace=["gflags", "google"])
