@@ -49,7 +49,7 @@ def gflags_sources(namespace=["google", "gflags"]):
         "src/mutex.h",
         "src/util.h",
     ] + select({
-        "//:x64_windows": [
+        "//:windows": [
             "src/windows_port.cc",
             "src/windows_port.h",
         ],
@@ -74,7 +74,7 @@ def gflags_library(hdrs=[], srcs=[], threads=1):
         "-DHAVE_STRTOQ",
         "-DHAVE_RWLOCK",
     ] + select({
-        "//:x64_windows": [
+        "//:windows": [
             "-DOS_WINDOWS",
         ],
         "//conditions:default": [
@@ -86,7 +86,7 @@ def gflags_library(hdrs=[], srcs=[], threads=1):
     linkopts = []
     if threads:
         linkopts += select({
-            "//:x64_windows": [],
+            "//:windows": [],
             "//conditions:default": ["-lpthread"],
         })
     else:
